@@ -1,0 +1,900 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===========================================
+   1. RESET BÁSICO
+   =========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Fondo oscuro profundo con degradado */
+  background-color: #05070a; 
+  background-image: radial-gradient(circle at 50% 50%, #111827 0%, #05070a 100%);
+  
+  /* Tipografía y color de texto para modo oscuro */
+  color: #e2e8f0; 
+  font-family: 'Inter', Arial, sans-serif; 
+  font-size: 16px;
+  line-height: 1.6;
+
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
+  opacity: 0.5;
+}
+
+/* ===========================================
+     2. TIPOGRAFÍA GENERAL
+     =========================================== */
+h1,
+h2,
+h3,
+h4 {
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* ===========================================
+     3. ENLACES
+     =========================================== */
+a {
+  color: #3b82f6;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #60a5fa;
+  text-decoration: none !important;
+}
+
+a:active {
+  color: #2563eb; 
+}
+
+/* ===========================================
+     4. LISTAS
+     =========================================== */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===========================================
+     5. HEADER
+     =========================================== */
+.header {
+  /* Fondo oscuro semi-transparente para que se vea moderno */
+  background-color: rgba(15, 23, 42, 0.9); 
+  backdrop-filter: blur(10px); /* Efecto de vidrio esmerilado */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
+  position: sticky; /* Se queda arriba mientras bajas */
+  top: 0;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  }
+
+.header__brand {
+ display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.header__name {
+  color: #ffffff; /* Blanco para que resalte */
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===========================================
+     6. NAVEGACIÓN
+     =========================================== */
+.nav {
+ width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; /* Cambiado a center para que el menú se vea equilibrado */
+  gap: clamp(10px, 2vw, 25px); /* Un poquito más de espacio dinámico */
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .nav__link {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+}
+
+.nav__item {
+  margin: 0 !important;
+  flex: 0 1 auto !important;
+}
+
+.nav__link {
+  padding: 8px 12px;
+  display: block;
+  color: #cbd5e1; /* Gris suave */
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none; /* ELIMINA SUBRAYADO POR DEFECTO */
+  transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+  color: #3b82f6; /* Brilla a blanco al pasar el mouse, sin subrayado */
+  text-decoration: none !important; /* REFUERZO: SIN SUBRAYADO */
+}
+
+.nav__link--active {
+  color: #3b82f6; /* Solo cambia el color para indicar que estás ahí */
+  font-weight: 700;
+  text-decoration: none; /* SIN RAYA AZUL ABAJO */
+}
+
+/* ===========================================
+     7. MAIN CONTENT Y SOBRE MI
+     =========================================== */
+.main {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.label-azul {
+    display: flex;         /* Esto permite que la raya y el texto se alineen */
+    align-items: center;   /* Centra la raya verticalmente con el texto */
+    justify-content: center;  
+    gap: 15px;             /* Espacio entre la raya y la primera letra */
+    
+    /* Tus estilos actuales (ejemplo) */
+    font-size: 1.5rem;
+    color: #ffffff;        /* Asegúrate de que sea tu azul */
+    text-transform: uppercase;
+    text-align: center;      /* Refuerzo para el centrado */
+    margin: 0px auto 30px;
+}
+
+.label-azul::before {
+    content: "";           /* Necesario para que aparezca */
+    width: 40px;           /* Largo de la raya (ajústalo a tu gusto) */
+    height: 2px;           /* Grosor de la raya */
+    background-color: #ffffff; /* El mismo color del texto */
+    display: inline-block;
+    border-radius: 2px;   
+}
+
+/* ===========================================
+     8. HERO SECTION
+     =========================================== */
+
+  .hero {
+  /* 1. La imagen de fondo con un filtro 
+  oscuro para que se lea el texto */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+  rgba(0, 0, 0, 0.7)), 
+                    url('IMG/Laptop\ 2.jfif');
+  
+  /* 2. Ajustes para que la foto no se repita y se vea bien */
+  background-size: cover; /* Estira la foto para que llene todo el espacio */
+  background-position: center; /* Centra la parte más importante de la foto */
+  background-repeat: no-repeat; /* Evita que la foto se vea como un mosaico */
+  
+  /* 3. Espaciado y colores */
+  min-height: 100vh; /* Hace que la sección ocupe toda la pantalla de alto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;  /* Pone todas las letras en blanco */
+  text-align: center;
+}
+
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero__title {
+  font-size: 48px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.hero__subtitle {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.hero__description {
+  font-size: 18px;
+  color: #e2dede;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__actions {
+  display: flex;
+    flex-wrap: wrap;       /* Esto permite que el botón baje si no cabe */
+    gap: 15px;             /* Crea el espacio entre botones sin usar márgenes manuales */
+    justify-content: center; /* Los mantiene centrados */
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;       /* Esta es la clave: permite que los elementos bajen */
+  justify-content: center; /* Mantiene los elementos centrados si saltan de línea */
+  gap: 20px;             /* Espacio entre cada estadística */
+  margin-top: 30px;      /* Espacio arriba de las estadísticas */
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column; /* Alinea uno arriba del otro */
+  align-items: center;    /* Los centra horizontalmente */
+  line-height: 1.2;
+}
+
+.stat__number {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  color: #1d4ed8;
+  margin-bottom: 6px;    /* AQUÍ: Controlas qué tan cerca está del texto de abajo */
+  
+}
+
+.stat__label {
+  font-size: 15px;
+  color: #e2dede;
+  display: block;        /* Asegura que el margen funcione correctamente */
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+/* ===========================================
+     9. BOTONES
+      =========================================== */
+
+.boton-contacto-flotante {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 65px !important;
+    height: 65px !important;
+    background-color: transparent !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    /* Quitamos el overflow:hidden para que el texto se pueda ver afuera */
+    overflow: visible !important; 
+    transition: transform 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.boton-contacto-flotante img {
+    width: 150% !important;
+    height: 150% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
+.mensaje-flotante {
+    position: absolute !important;
+    right: 80px !important; /* Lo mueve a la izquierda del botón */
+    background-color: #333 !important; /* Color oscuro profesional */
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    
+    /* EFECTO DE OCULTAR */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateX(10px) !important; /* Un pequeño movimiento */
+    transition: all 0.3s ease !important;
+    pointer-events: none !important;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+.boton-contacto-flotante:hover {
+    transform: scale(1.1) !important;
+}
+
+.boton-contacto-flotante:hover .mensaje-flotante {
+    /* SE HACE VISIBLE */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important; /* Regresa a su sitio */
+}
+
+  .button {
+ display: inline-block;
+    padding: 15px 20px;
+    border-radius: 18px; /* Bordes redondeados modernos */
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease; /* Suavidad en el movimiento */
+    position: relative;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;   /* Evita que el texto del botón se rompa en dos líneas */
+    min-width: 180px;      /* Les da un tamaño base consistente */
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .button {
+        width: 100%;       /* Ocupan el ancho completo para que sea fácil tocarlos con el dedo */
+    }
+}
+
+.button:hover {
+    transform: translateY(-4px) scale(1.05); /* Sube un poco y se agranda */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más difusa para simular altura */
+}
+
+.button:active {
+    transform: translateY(2px); /* Se mueve hacia abajo */
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2); /* La sombra se achica */
+}
+
+.button--primary {
+  color: white;
+  border-color: #2563eb;
+  background: linear-gradient(180deg, #1d4ed8 0%, #007bff 100%);
+  box-shadow: 0 4px 0 #2563eb;
+}
+
+.button--primary:hover {
+  background-color: #edf1f0;
+  color: white;
+}
+
+.button--secondary {
+  background-color: #ffffff;
+  color: #2563eb;
+  border-color: #2563eb;
+  box-shadow: 0 4px 0 #d1d1d1;
+}
+
+.button--secondary:hover {
+  background-color: #edf1f0;
+}
+
+.button--large {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+/* ===========================================
+     10. ABOUT SECTION
+     =========================================== */
+.about {
+    padding: 50px 20px;
+}
+
+.about__card {
+    background: #ffffff;
+       display: flex; 
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+.about__image-container {
+    flex: 1; 
+    min-width: 350px;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.about__img {
+   width: 100%;  
+    height: auto; 
+    max-height: 400px;     
+   object-fit: cover;
+    border-radius: 20px;     
+    border: 4px solid white; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+}
+
+.about__container {
+ max-width: 1400px; 
+  width: 95%;       
+  margin: 0 auto;
+  
+}
+
+.about__content {
+    flex: 1.5; 
+    padding: 30px;
+    text-align: left;
+    
+}
+
+.about__title {
+  font-size: 2rem;
+  text-align: center;
+    margin-bottom: 40px;
+    color: #091b52;
+}
+
+.about__intro {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 24px;
+  
+}
+
+.about__text {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 32px;
+ 
+}
+
+@media (max-width: 768px) {
+    .about__card {
+        flex-direction: column; /* Apila la imagen arriba y el texto abajo */
+    }
+
+    .about__image-container {
+        min-width: 100%; /* La imagen ocupa todo el ancho */
+        padding: 20px;
+    }
+
+    .about__content {
+        padding: 20px;
+        text-align: center; /* Centrar el texto en móvil se ve más ordenado */
+    }
+
+    .about__img {
+        max-height: 300px; /* Un poco más pequeña para no ocupar toda la pantalla */
+    }
+}
+
+/* ===========================================
+     11. VALUES
+     =========================================== */
+.values {
+    margin-top: 48px;
+}
+
+.values__main-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 50px auto 30px;
+}
+
+.values__main-title::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.values__container-card {
+    background: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.values__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px 50px;
+}
+
+.value__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.value__header strong {
+    font-size: 1.2rem;
+    color: #091b52;
+    font-weight: 700;
+}
+
+.value__icon {
+    font-size: 1.5rem;
+}
+
+.value__item p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-left: 36px;
+}
+
+@media (max-width: 768px) {
+    .values__grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .values__container-card {
+        padding: 30px 20px;
+    }
+
+    .value__item p {
+        margin-left: 0; 
+        text-align: center;
+    }
+
+    .value__header {
+        justify-content: center;
+    }
+}
+
+/* ===========================================
+     12. SKILLS SECTION
+     =========================================== */
+.skills {
+  padding: 40px 0;
+}
+
+.skills__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skills__title {
+  display: flex;         
+    align-items: center;   
+    justify-content: center;  
+    gap: 15px;             
+    font-size: 1.5rem;
+    color: #ffffff;        
+    text-transform: uppercase;
+    text-align: center;      
+    margin: 0 auto 30px;
+}
+
+.skills__title::before {
+    content: "";          
+    width: 40px;          
+    height: 2px;           
+    background-color: #ffffff; 
+    border-radius: 2px;   
+}
+
+.skills__list {
+  margin-bottom: 48px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill__name {
+  color: #ffffff;
+   font-size: 15px;
+}
+
+.skill__bar {
+  width: 100%;
+  height: 10px !important;    
+  background-color: #eee;    
+  border-radius: 50px;       
+  overflow: hidden;          
+  position: relative;
+}
+
+.skill__progress {
+  background-color: #1d4ed8;
+  height: 100% !important;   
+  border-radius: 50px;      
+}
+
+.skill__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px; 
+}
+
+.skill__progress--html {
+  width: 90%;
+}
+
+.skill__progress--css {
+  width: 75%;
+}
+
+.skill__progress--seo_on {
+  width: 70%;
+}
+
+.skill__progress--seo_tecnico {
+  width: 70%;
+}
+
+.skill__progress--key {
+  width: 65%;
+}
+
+.skill__progress--js {
+  width: 35%;
+}
+
+.skill__percentage {
+  font-weight: bold;
+  color: #ffffff; 
+  font-size: 13px;
+}
+
+/* ===========================================
+     13. LEARNING
+     =========================================== */
+.learning {
+    margin-top: 50px;
+    padding: 30px;
+    background: #ffffff; 
+    border: 1px dashed #bddbff; 
+    text-align: center;
+}
+
+.learning__title {
+    font-size: 1.3rem;
+    color: #091b52;
+    margin-bottom: 20px;
+}
+
+.learning__tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 700px; 
+    margin: 0 auto; 
+    gap: 20px; 
+    padding: 20px;
+}
+
+.learning__tag {
+    color: #1d4ed8;
+    padding: 15px; 
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.08);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(9, 27, 82, 0.2);
+    transition: all 0.3s ease;
+}
+
+.learning__tag:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.learning__note {
+    margin-top: 25px;
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.8; 
+    letter-spacing: 0.3px; 
+}
+
+@media (max-width: 600px) {
+    .learning__tags {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===========================================
+     14. CONTACT SECTION
+     =========================================== */
+.contact {
+    padding: 40px 0;
+    margin-bottom: 70px;
+}
+
+.contact__container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0 auto 30px;
+}
+
+.contact__title::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.contact__subtitle {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-top: -10px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.contact__description {
+    color: #cbd5e1; 
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact__methods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px; 
+}
+
+.contact__method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    flex: 1 1 200px;
+    max-width: 250px;
+}
+
+.contact__icon {
+    width: 45px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.contact__icon:hover {
+    transform: scale(1.1);
+}
+
+.contact__method-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.contact__link {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* ===========================================
+     15. FOOTER
+     =========================================== */
+.footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer__nav {
+  margin-bottom: 24px;
+}
+
+.footer__link {
+  color: #ffffff;
+  margin: 0 16px;
+  display: inline-block;
+}
+
+.footer__link:hover {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.footer__copyright {
+  color: #e2dede;
+  margin-bottom: 8px;
+}
+
+.footer__credits {
+  color: #e2dede;
+  font-size: 14px;
+}
